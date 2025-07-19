@@ -8,6 +8,9 @@ on:
 permissions:
   contents: write
 
+env:
+    PAR2_VERSION: ${{ github.ref_name }}
+
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
@@ -16,7 +19,6 @@ jobs:
       - name: Create necessary directories
         run: |
           mkdir -p binaries
-          echo "PAR2_VERSION=$(echo ${{ github.ref_name }} | sed 's/^v//')" >> $GITHUB_ENV
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -36,7 +38,7 @@ jobs:
           # export the final stage filesystem to `binaries/`
           outputs: ./binaries 
           build-args: |
-            PAR2_VERSION=${{ env.PAR2_VERSION }}
+            PAR2_VERSION=${{ github.ref_name }}
 
       - name: Package binaries for release
         run: |
