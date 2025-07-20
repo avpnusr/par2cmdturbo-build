@@ -8,8 +8,8 @@ RUN CPUARCH=${TARGETARCH}${TARGETVARIANT} \
 && mkdir -p /src/par2cmdline-turbo 
 
 WORKDIR /src/par2cmdline-turbo
-ADD https://github.com/animetosho/par2cmdline-turbo.git#${PAR2_VERSION} . \
-    && ./automake.sh \
+ADD https://github.com/animetosho/par2cmdline-turbo.git#${PAR2_VERSION} .
+RUN && ./automake.sh \
     && ./configure \
     && make -j2 \
     && cp par2 /par2_${TARGETARCH}${TARGETVARIANT} 
