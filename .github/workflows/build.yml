@@ -18,6 +18,7 @@ jobs:
     steps:
       - name: Create necessary directories
         run: |
+          apt update && apt install -y git
           mkdir -p binaries
       - name: Checkout repository
         uses: actions/checkout@v4
