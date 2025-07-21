@@ -1,5 +1,3 @@
-# syntax=docker/dockerfile:experimental
-
 FROM alpine:latest AS builder
 ARG PAR2_VERSION TARGETARCH TARGETVARIANT
 RUN CPUARCH=${TARGETARCH}${TARGETVARIANT} \
