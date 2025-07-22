@@ -39,6 +39,7 @@ jobs:
           outputs: ./binaries 
           build-args: |
             PAR2_VERSION=${{ github.ref_name }}
+            LDFLAGS=-static -s
 
       - name: Package binaries for release
         run: |

@@ -1,5 +1,5 @@
 FROM alpine:latest AS builder
-ARG PAR2_VERSION TARGETARCH TARGETVARIANT
+ARG PAR2_VERSION TARGETARCH TARGETVARIANT LDFLAGS
 RUN CPUARCH=${TARGETARCH}${TARGETVARIANT} \
 && if [ $CPUARCH == "armv6" ]; then export QEMU_CPU="arm1176"; fi \
 && apk add -U --update --no-cache build-base autoconf automake git \
